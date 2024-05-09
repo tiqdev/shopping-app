@@ -5,9 +5,7 @@ const CartDrawer = () => {
   return (
     <Drawer.Root shouldScaleBackground>
       <Drawer.Trigger asChild>
-        <div className="flex center-row w-9 h-9 rounded-lg cursor-pointer border border-transparent hover:border-white transition-colors">
-          <ShoppingCart />
-        </div>
+        <ShoppingCart />
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
