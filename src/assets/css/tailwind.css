@@ -8,12 +8,6 @@ body {
   @apply font-montserrat;
 }
 
-.icon {
-  width: 36px;
-  height: 36px;
-  background: red;
-}
-
 @layer components {
   .center-row {
     display: flex;

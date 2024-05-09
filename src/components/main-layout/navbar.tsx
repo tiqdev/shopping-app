@@ -1,4 +1,4 @@
-import CartIconButton from "./cart-icon-button";
+import CartIconButton from "./cart-button";
 import Logo from "./logo";
 import SearchInput from "./search-input";
 
