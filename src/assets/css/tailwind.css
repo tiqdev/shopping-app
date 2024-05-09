@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 body {
-  @apply font-montserrat;
+  @apply font-montserrat bg-secondary;
 }
 
 @layer components {

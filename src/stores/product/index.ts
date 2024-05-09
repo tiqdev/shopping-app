@@ -1,6 +1,8 @@
+import { FilterOptions } from "@/models/FilterOptions";
 import { Product } from "@/models/Product";
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
+import axios from "axios";
 
 type InitialStateType = {
   products: Product[];
@@ -18,7 +20,7 @@ type InitialStateType = {
 
   cartPanelIsOpen: boolean;
 
-  filter: string;
+  filterOptions: FilterOptions;
 };
 
 const initialState: InitialStateType = {
@@ -33,7 +35,13 @@ const initialState: InitialStateType = {
   cartLoading: false,
   cartError: "",
   cartPanelIsOpen: false,
-  filter: "",
+  filterOptions: {
+    sort: "price-low-high",
+    brands: [],
+    models: [],
+    search: "polestar",
+    page: 1,
+  },
 };
 
 export const ProductSlice = createSlice({
@@ -44,8 +52,36 @@ export const ProductSlice = createSlice({
       state.products = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(_fetchProducts.pending, (state) => {
+      state.productsLoading = true;
+    });
+    builder.addCase(_fetchProducts.fulfilled, (state, action) => {
+      state.productsLoading = false;
+      state.products = action.payload;
+    });
+    builder.addCase(_fetchProducts.rejected, (state) => {
+      state.productsLoading = false;
+      state.productsError = "An error occurred while fetching products.";
+    });
+  },
 });
 
 export const { _setProducts } = ProductSlice.actions;
-
 export default ProductSlice.reducer;
+
+export const _fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async () => {
+    try {
+      const response = await axios.get(
+        "https://5fc9346b2af77700165ae514.mockapi.io/products"
+      );
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+);
