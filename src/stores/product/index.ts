@@ -39,7 +39,7 @@ const initialState: InitialStateType = {
     sort: "price-low-high",
     brands: [],
     models: [],
-    search: "polestar",
+    search: "",
     page: 1,
   },
 };
