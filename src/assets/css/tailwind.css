@@ -10,15 +10,14 @@ body {
 
 @layer components {
   .center-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @apply flex flex-row items-center justify-center;
   }
 
   .center-col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .products-list {
+    @apply w-full grid xl:grid-cols-4 lg:grid-cols-3 tablet:grid-cols-2 sm:grid-cols-3 mobile:grid-cols-2 grid-cols-1 gap-[28px] h-fit;
   }
 }
