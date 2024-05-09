@@ -23,7 +23,7 @@ const ProductsContainer = () => {
   const pageCount = data.pageCount;
 
   return (
-    <div className="flex flex-col mx-auto">
+    <div className="flex flex-col mx-auto pt-4">
       {/*  Loading  */}
       {productsLoading && (
         <div className="products-list">
@@ -33,7 +33,7 @@ const ProductsContainer = () => {
         </div>
       )}
 
-      {/*  Products  */}
+      {/*  Products Not Found  */}
       {!productsLoading && filteredProducts.length === 0 && (
         <div className="flex-1 flex items-center justify-center max-w-[810px] mx-auto h-fit">
           <span className="text-lg text-gray-500">
@@ -42,6 +42,7 @@ const ProductsContainer = () => {
         </div>
       )}
 
+      {/*  Products List  */}
       {filteredProducts.length > 0 && (
         <div className="flex-1 max-w-[810px] mx-auto h-fit pb-10">
           {/*  Products List  */}
