@@ -7,6 +7,10 @@ export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
 
+export const formatPrice = (price: number) => {
+  return price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+};
+
 export const filterProducts = (
   list: Product[],
   filterOptions: FilterOptions
@@ -69,4 +73,30 @@ export const filterProducts = (
   filteredList = filteredList.slice(startIndex, endIndex);
 
   return { filteredList, pageCount };
+};
+
+export const filterBrands = (products: Product[]) => {
+  const brands = products.map((product) => product.brand);
+  return Array.from(new Set(brands));
+};
+
+export const filterModels = (products: Product[]) => {
+  const models = products.map((product) => product.model);
+  return Array.from(new Set(models));
+};
+
+export const filterModelsByBrand = (
+  products: Product[],
+  brandList: string[]
+) => {
+  if (brandList.length === 0) {
+    return filterModels(products);
+  }
+  const models = products
+    .filter((product) => brandList.includes(product.brand))
+    .map((product) => product.model);
+
+  console.log(brandList);
+  console.log(models);
+  return Array.from(new Set(models));
 };

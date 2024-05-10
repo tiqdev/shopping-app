@@ -13,7 +13,7 @@ export default {
         'soft': '#f3f3f6',
       },
       maxWidth: {
-        'pagemax': '1320px',
+        'pagemax': '1360px',
       },
       fontFamily: {
         "montserrat": ["Montserrat", "sans-serif"],

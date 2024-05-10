@@ -11,6 +11,7 @@ import {
 import { useEffect } from "react";
 import { useLocalStorage } from "usehooks-ts";
 import CartItem from "./cart-item";
+import { formatPrice } from "@/lib/utils";
 
 const CartList = () => {
   const [cartJson, setCartJson] = useLocalStorage("cartJson", "");
@@ -48,7 +49,7 @@ const CartList = () => {
           <div className="flex flex-row items-center justify-start gap-1">
             <span className="text-sm text-black">Total Price:</span>
             <span className="font-bold text-base text-primary">
-              {cartTotalPrice.toFixed(2)}₺
+              {formatPrice(cartTotalPrice)}₺
             </span>
           </div>
           <button className="bg-primary text-white rounded-[4px] px-4 py-2 w-full">

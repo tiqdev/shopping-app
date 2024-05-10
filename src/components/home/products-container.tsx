@@ -4,15 +4,19 @@ import {
   useFilterOptions,
   useProductsLoading,
   useProducts,
+  useIsFilterSheetOpen,
 } from "@/stores/product/hooks";
 import { useMemo } from "react";
 import ProductList from "./products-list";
 import SkeletonProduct from "./skeleton-product";
+import { Filter } from "lucide-react";
+import { setIsFilterSheetOpen } from "@/stores/product/actions";
 
 const ProductsContainer = () => {
   const products = useProducts();
   const productsLoading = useProductsLoading();
   const filterOptions = useFilterOptions();
+  const isFilterSheetOpen = useIsFilterSheetOpen();
 
   const data = useMemo(
     () => filterProducts(products, filterOptions),
@@ -24,6 +28,15 @@ const ProductsContainer = () => {
 
   return (
     <div className="flex flex-col mx-auto pt-4">
+      <div className="flex justify-between items-center mb-2">
+        <h1 className="text-xl font-bold text-primary">Products</h1>
+        <div
+          className="w-8 h-8 flex items-center justify-center tablet:hidden"
+          onClick={() => setIsFilterSheetOpen(!isFilterSheetOpen)}
+        >
+          <Filter size={24} className="text-primary" />
+        </div>
+      </div>
       {/*  Loading  */}
       {productsLoading && (
         <div className="products-list">
@@ -35,7 +48,7 @@ const ProductsContainer = () => {
 
       {/*  Products Not Found  */}
       {!productsLoading && filteredProducts.length === 0 && (
-        <div className="flex-1 flex items-center justify-center max-w-[810px] mx-auto h-fit">
+        <div className="flex items-center justify-center max-w-[810px] mx-auto h-[400px]">
           <span className="text-lg text-gray-500">
             No results were found for your search
           </span>

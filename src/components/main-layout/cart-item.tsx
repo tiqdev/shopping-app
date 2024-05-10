@@ -1,5 +1,6 @@
 import { CartProduct } from "@/models/CartProduct";
 import CartQuantityButtons from "./cart-quantity-buttons";
+import { formatPrice } from "@/lib/utils";
 
 const CartItem = ({ product }: { product: CartProduct }) => {
   return (
@@ -9,7 +10,7 @@ const CartItem = ({ product }: { product: CartProduct }) => {
           {product.name}
         </span>
         <span className="font-medium text-[10px] text-primary">
-          {product.price}₺
+          {formatPrice(Number(product.price))}₺
         </span>
       </div>
 

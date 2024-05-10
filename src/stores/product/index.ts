@@ -1,3 +1,4 @@
+import { filterBrands, filterModels } from "@/lib/utils";
 import { CartProduct } from "@/models/CartProduct";
 import { FilterOptions } from "@/models/FilterOptions";
 import { Product } from "@/models/Product";
@@ -20,9 +21,12 @@ type InitialStateType = {
   cartLoading: boolean;
   cartError: string;
 
-  cartPanelIsOpen: boolean;
+  isCartSheetOpen: boolean;
+  isFilterSheetOpen: boolean;
 
   filterOptions: FilterOptions;
+  modelList: string[];
+  brandList: string[];
 };
 
 const initialState: InitialStateType = {
@@ -37,7 +41,8 @@ const initialState: InitialStateType = {
   cartTotalPrice: 0,
   cartLoading: false,
   cartError: "",
-  cartPanelIsOpen: false,
+  isCartSheetOpen: false,
+  isFilterSheetOpen: false,
   filterOptions: {
     sort: "price-low-high",
     brands: [],
@@ -45,6 +50,8 @@ const initialState: InitialStateType = {
     search: "",
     page: 1,
   },
+  modelList: [],
+  brandList: [],
 };
 
 export const ProductSlice = createSlice({
@@ -53,6 +60,27 @@ export const ProductSlice = createSlice({
   reducers: {
     _setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
+    },
+
+    _setFilterOptions: (state, action: PayloadAction<FilterOptions>) => {
+      state.filterOptions = action.payload;
+    },
+
+    _setBrandList: (state, action: PayloadAction<string[]>) => {
+      state.brandList = action.payload;
+    },
+
+    _setModelList: (state, action: PayloadAction<string[]>) => {
+      state.modelList = action.payload;
+    },
+
+    _setisCartSheetOpen: (state, action: PayloadAction<boolean>) => {
+      state.isCartSheetOpen = action.payload;
+    },
+
+    _setIsFilterSheetOpen: (state, action: PayloadAction<boolean>) => {
+      console.log(action.payload, "action.payload");
+      state.isFilterSheetOpen = action.payload;
     },
 
     _addToCart: (state, action: PayloadAction<string>) => {
@@ -125,9 +153,11 @@ export const ProductSlice = createSlice({
     _setCart: (state, action: PayloadAction<CartProduct[]>) => {
       state.cart = action.payload;
     },
+
     _setCartTotalPrice: (state, action) => {
       state.cartTotalPrice = action.payload;
     },
+
     _setCartProductsCount: (state, action) => {
       state.cartProductsCount = action.payload;
     },
@@ -139,6 +169,9 @@ export const ProductSlice = createSlice({
     builder.addCase(_fetchProducts.fulfilled, (state, action) => {
       state.productsLoading = false;
       state.products = action.payload;
+
+      state.brandList = filterBrands(action.payload);
+      state.modelList = filterModels(action.payload);
     });
     builder.addCase(_fetchProducts.rejected, (state) => {
       state.productsLoading = false;
@@ -155,6 +188,11 @@ export const {
   _setCart,
   _setCartTotalPrice,
   _setCartProductsCount,
+  _setisCartSheetOpen,
+  _setFilterOptions,
+  _setModelList,
+  _setBrandList,
+  _setIsFilterSheetOpen,
 } = ProductSlice.actions;
 export default ProductSlice.reducer;
 
