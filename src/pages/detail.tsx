@@ -1,5 +1,6 @@
+import { addToCart } from "@/stores/product/actions";
 import { useProducts } from "@/stores/product/hooks";
-import { useMemo } from "react";
+import { useMemo, MouseEvent } from "react";
 import { useParams } from "react-router-dom";
 
 const Detail = () => {
@@ -27,7 +28,13 @@ const Detail = () => {
           <div className="flex flex-col gap-[15px]">
             <h1>{selectedProduct.name}</h1>
             <p>{selectedProduct.price}</p>
-            <button className="bg-primary text-white rounded-[4px] px-4 py-2 w-full">
+            <button
+              onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                event.preventDefault();
+                addToCart(selectedProduct.id);
+              }}
+              className="bg-primary text-white rounded-[4px] px-4 py-2 w-full"
+            >
               Add to Cart
             </button>
             <p>{selectedProduct.description}</p>

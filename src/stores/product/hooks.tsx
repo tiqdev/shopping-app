@@ -16,3 +16,11 @@ export const useProductsLoading = () => {
 export const useFilterOptions = () => {
   return useAppSelector((state: RootState) => state.products.filterOptions);
 };
+
+export const useCart = () => {
+  return useAppSelector((state: RootState) => state.products.cart);
+};
+
+export const useCartTotalPrice = () => {
+  return useAppSelector((state: RootState) => state.products.cartTotalPrice);
+};

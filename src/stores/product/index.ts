@@ -1,3 +1,4 @@
+import { CartProduct } from "@/models/CartProduct";
 import { FilterOptions } from "@/models/FilterOptions";
 import { Product } from "@/models/Product";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -13,8 +14,9 @@ type InitialStateType = {
   searchLoading: boolean;
   searchError: string;
 
-  cart: Product[];
+  cart: CartProduct[];
   cartProductsCount: number;
+  cartTotalPrice: number;
   cartLoading: boolean;
   cartError: string;
 
@@ -32,6 +34,7 @@ const initialState: InitialStateType = {
   searchError: "",
   cart: [],
   cartProductsCount: 0,
+  cartTotalPrice: 0,
   cartLoading: false,
   cartError: "",
   cartPanelIsOpen: false,
@@ -51,6 +54,32 @@ export const ProductSlice = createSlice({
     _setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     },
+    _addToCart: (state, action: PayloadAction<string>) => {
+      // Check if the product is already in the cart
+      const existingProductIndex = state.cart.findIndex(
+        (p) => p.id === action.payload
+      );
+
+      // Find the product in the products array
+      const _product = state.products.find((p) => p.id === action.payload);
+
+      if (existingProductIndex !== -1) {
+        state.cart[existingProductIndex].quantity++;
+      } else {
+        if (_product) {
+          const newProduct: CartProduct = { ..._product, quantity: 1 };
+          state.cart.push(newProduct);
+        }
+      }
+      state.cartTotalPrice = state.cart.reduce(
+        (acc, product) => acc + Number(product.price) * product.quantity,
+        0
+      );
+      state.cartProductsCount = state.cart.reduce(
+        (acc, product) => acc + product.quantity,
+        0
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(_fetchProducts.pending, (state) => {
@@ -67,7 +96,7 @@ export const ProductSlice = createSlice({
   },
 });
 
-export const { _setProducts } = ProductSlice.actions;
+export const { _setProducts, _addToCart } = ProductSlice.actions;
 export default ProductSlice.reducer;
 
 export const _fetchProducts = createAsyncThunk(

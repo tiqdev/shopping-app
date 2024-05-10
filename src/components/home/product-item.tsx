@@ -1,5 +1,7 @@
 import { Product } from "@/models/Product";
+import { addToCart } from "@/stores/product/actions";
 import { Link } from "react-router-dom";
+import { MouseEvent } from "react";
 
 const ProductItem = ({ product }: { product: Product }) => {
   return (
@@ -19,7 +21,13 @@ const ProductItem = ({ product }: { product: Product }) => {
         </span>
 
         {/*  Add to Cart Button, we can create button component for this. */}
-        <button className="bg-primary text-white rounded-[4px] px-4 py-2 w-full">
+        <button
+          onClick={(event: MouseEvent<HTMLButtonElement>) => {
+            event.preventDefault();
+            addToCart(product.id);
+          }}
+          className="bg-primary text-white rounded-[4px] px-4 py-2 w-full"
+        >
           Add to Cart
         </button>
       </div>

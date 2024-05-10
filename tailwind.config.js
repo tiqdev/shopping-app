@@ -21,7 +21,7 @@ export default {
       },
       screens: {
         'tablet': '840px',
-        'mobile': '480px'
+        'mobile': '420px'
       },
     },
   },
