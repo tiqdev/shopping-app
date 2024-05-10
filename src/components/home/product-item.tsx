@@ -6,7 +6,7 @@ import { MouseEvent } from "react";
 const ProductItem = ({ product }: { product: Product }) => {
   return (
     <Link to={"/detail/" + product.id} className="center-col" key={product.id}>
-      <div className="flex flex-col gap-[15px] items-stretch p-[10px] bg-white h-fit w-[180px] shadow-md">
+      <div className="flex flex-col gap-3 items-stretch p-[10px] bg-white h-fit w-[180px] border border-card rounded-[4px] hover:shadow-md transition-shadow">
         <img
           src={product.image}
           alt={product.name}

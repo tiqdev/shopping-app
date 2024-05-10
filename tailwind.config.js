@@ -9,6 +9,8 @@ export default {
       colors: {
         'primary': '#2A59FE',
         'secondary': '#F9F9F9',
+        'tertiary': '#616b8a',
+        'soft': '#f3f3f6',
       },
       maxWidth: {
         'pagemax': '1320px',
@@ -23,6 +25,9 @@ export default {
         'tablet': '840px',
         'mobile': '420px'
       },
+      borderColor: {
+        'card': 'hsl(0deg 0% 0% / 8%)',
+      }
     },
   },
   plugins: [],

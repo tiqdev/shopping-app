@@ -18,7 +18,7 @@ const Detail = () => {
     );
   } else {
     return (
-      <div className="w-full pt-8 pr-4">
+      <div className="flex-1 pt-4 pr-4">
         <div className="flex lg:flex-row flex-col lg:items-start items-center justify-start bg-white shadow-md p-4 gap-4">
           <img
             src={selectedProduct.image}
