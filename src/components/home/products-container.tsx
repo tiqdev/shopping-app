@@ -43,7 +43,7 @@ const ProductsContainer = () => {
       )}
 
       {/*  Products List  */}
-      {filteredProducts.length > 0 && (
+      {!productsLoading && filteredProducts.length > 0 && (
         <div className="flex-1 max-w-[810px] mx-auto h-fit pb-10">
           {/*  Products List  */}
           <ProductList filteredProducts={filteredProducts} />

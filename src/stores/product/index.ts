@@ -54,6 +54,7 @@ export const ProductSlice = createSlice({
     _setProducts: (state, action: PayloadAction<Product[]>) => {
       state.products = action.payload;
     },
+
     _addToCart: (state, action: PayloadAction<string>) => {
       // Check if the product is already in the cart
       const existingProductIndex = state.cart.findIndex(
@@ -80,6 +81,56 @@ export const ProductSlice = createSlice({
         0
       );
     },
+
+    _incrementProductQuantity: (state, action: PayloadAction<string>) => {
+      const existingProductIndex = state.cart.findIndex(
+        (p) => p.id === action.payload
+      );
+      if (existingProductIndex !== -1) {
+        state.cart[existingProductIndex].quantity++;
+      }
+      state.cartTotalPrice = state.cart.reduce(
+        (acc, product) => acc + Number(product.price) * product.quantity,
+        0
+      );
+      state.cartProductsCount = state.cart.reduce(
+        (acc, product) => acc + product.quantity,
+        0
+      );
+    },
+
+    _decrementProductQuantity: (state, action: PayloadAction<string>) => {
+      const existingProductIndex = state.cart.findIndex(
+        (p) => p.id === action.payload
+      );
+
+      if (existingProductIndex !== -1) {
+        if (state.cart[existingProductIndex].quantity > 1) {
+          state.cart[existingProductIndex].quantity--;
+        } else {
+          state.cart = state.cart.filter((p) => p.id !== action.payload);
+        }
+      }
+
+      state.cartTotalPrice = state.cart.reduce(
+        (acc, product) => acc + Number(product.price) * product.quantity,
+        0
+      );
+      state.cartProductsCount = state.cart.reduce(
+        (acc, product) => acc + product.quantity,
+        0
+      );
+    },
+
+    _setCart: (state, action: PayloadAction<CartProduct[]>) => {
+      state.cart = action.payload;
+    },
+    _setCartTotalPrice: (state, action) => {
+      state.cartTotalPrice = action.payload;
+    },
+    _setCartProductsCount: (state, action) => {
+      state.cartProductsCount = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(_fetchProducts.pending, (state) => {
@@ -96,7 +147,15 @@ export const ProductSlice = createSlice({
   },
 });
 
-export const { _setProducts, _addToCart } = ProductSlice.actions;
+export const {
+  _setProducts,
+  _addToCart,
+  _incrementProductQuantity,
+  _decrementProductQuantity,
+  _setCart,
+  _setCartTotalPrice,
+  _setCartProductsCount,
+} = ProductSlice.actions;
 export default ProductSlice.reducer;
 
 export const _fetchProducts = createAsyncThunk(
@@ -106,7 +165,6 @@ export const _fetchProducts = createAsyncThunk(
       const response = await axios.get(
         "https://5fc9346b2af77700165ae514.mockapi.io/products"
       );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error(error);
