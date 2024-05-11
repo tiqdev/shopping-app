@@ -20,24 +20,28 @@ const CartList = () => {
   const cartTotalPrice = useCartTotalPrice();
   const cartProductsCount = useCartProductsCount();
 
-  useEffect(() => {
+  const updateCartInStorage = () => {
     const _cartInfo = {
       cartList: cart,
       cartTotalPrice: cartTotalPrice,
       cartProductsCount: cartProductsCount,
     };
+    setCartJson(JSON.stringify(_cartInfo));
+  };
 
-    if (cart.length === 0) {
-      if (cartJson) {
-        const _cart = JSON.parse(cartJson);
-        setCart(_cart.cartList);
-        setCartTotalPrice(_cart.cartTotalPrice);
-        setCartProductsCount(_cart.cartProductsCount);
-      }
-    } else {
-      setCartJson(JSON.stringify(_cartInfo));
+  // Update cart in local storage when cart changes
+  useEffect(() => {
+    updateCartInStorage();
+  }, [cart, cartTotalPrice, cartProductsCount, setCartJson]);
+
+  // Set cart from local storage when component mounts
+  useEffect(() => {
+    if (cartJson) {
+      setCart(JSON.parse(cartJson).cartList);
+      setCartTotalPrice(JSON.parse(cartJson).cartTotalPrice);
+      setCartProductsCount(JSON.parse(cartJson).cartProductsCount);
     }
-  }, [cart, cartJson, setCartJson, cartTotalPrice, cartProductsCount]);
+  }, [cartJson]);
 
   return (
     cart.length > 0 && (

@@ -100,3 +100,9 @@ export const filterModelsByBrand = (
   console.log(models);
   return Array.from(new Set(models));
 };
+
+export const searchInFilter = (list: string[], query: string) => {
+  return list.filter((item) =>
+    item.toLowerCase().includes(query.toLowerCase())
+  );
+};

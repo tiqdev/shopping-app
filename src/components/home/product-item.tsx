@@ -12,13 +12,13 @@ const ProductItem = ({ product }: { product: Product }) => {
   return (
     <Link to={"/detail/" + product.id} className="center-col" key={product.id}>
       <div className="flex flex-col gap-3 items-stretch p-[10px] bg-white h-fit mobile:w-[180px] w-[150px] border border-card rounded-[4px] hover:shadow-md transition-shadow">
-        <img
+        <div className="w-[160px] h-[150px] object-cover bg-red-100"></div>
+
+        {/**  <img
           src={product.image}
           alt={product.name}
           className="w-[160px] h-[150px] object-cover"
-        />
-
-        {/**  <div className="w-[160px] h-[150px] object-cover bg-red-100"></div> */}
+        />*/}
 
         <span className="text-primary font-medium text-sm">
           {formatPrice(Number(product.price))}₺

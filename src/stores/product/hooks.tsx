@@ -40,3 +40,7 @@ export const useIsCartSheetOpen = () => {
 export const useIsFilterSheetOpen = () => {
   return useAppSelector((state: RootState) => state.products.isFilterSheetOpen);
 };
+
+export const useIsSearchLoading = () => {
+  return useAppSelector((state: RootState) => state.products.isSearchLoading);
+};

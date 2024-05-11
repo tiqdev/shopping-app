@@ -11,8 +11,7 @@ type InitialStateType = {
   productsLoading: boolean;
   productsError: string;
 
-  search: string;
-  searchLoading: boolean;
+  isSearchLoading: boolean;
   searchError: string;
 
   cart: CartProduct[];
@@ -33,8 +32,8 @@ const initialState: InitialStateType = {
   products: [],
   productsLoading: false,
   productsError: "",
-  search: "",
-  searchLoading: false,
+
+  isSearchLoading: false,
   searchError: "",
   cart: [],
   cartProductsCount: 0,
@@ -76,6 +75,10 @@ export const ProductSlice = createSlice({
 
     _setisCartSheetOpen: (state, action: PayloadAction<boolean>) => {
       state.isCartSheetOpen = action.payload;
+    },
+
+    _setIsSearchLoading: (state, action: PayloadAction<boolean>) => {
+      state.isSearchLoading = action.payload;
     },
 
     _setIsFilterSheetOpen: (state, action: PayloadAction<boolean>) => {
@@ -167,11 +170,10 @@ export const ProductSlice = createSlice({
       state.productsLoading = true;
     });
     builder.addCase(_fetchProducts.fulfilled, (state, action) => {
-      state.productsLoading = false;
       state.products = action.payload;
-
       state.brandList = filterBrands(action.payload);
       state.modelList = filterModels(action.payload);
+      state.productsLoading = false;
     });
     builder.addCase(_fetchProducts.rejected, (state) => {
       state.productsLoading = false;
@@ -193,6 +195,7 @@ export const {
   _setModelList,
   _setBrandList,
   _setIsFilterSheetOpen,
+  _setIsSearchLoading,
 } = ProductSlice.actions;
 export default ProductSlice.reducer;
 

@@ -1,22 +1,29 @@
 import CartQuantityButtons from "@/components/main-layout/cart-quantity-buttons";
 import { formatPrice } from "@/lib/utils";
-import { addToCart } from "@/stores/product/actions";
+import { addToCart, fetchProducts } from "@/stores/product/actions";
 import { useCart, useProducts } from "@/stores/product/hooks";
-import { useMemo, MouseEvent } from "react";
+import { useMemo, MouseEvent, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const Detail = () => {
   const { id } = useParams<{ id: string }>();
   const products = useProducts();
   const cart = useCart();
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   const selectedProduct = useMemo(() => {
     return products.find((product) => product.id === id);
   }, [products, id]);
 
   if (!selectedProduct) {
     return (
-      <div>
-        <h1>Product not found</h1>
+      <div className="flex-1 flex ">
+        <div className="center-col w-full h-[60%] ">
+          <h1 className="text-2xl text-center">Product not found</h1>
+        </div>
       </div>
     );
   } else {

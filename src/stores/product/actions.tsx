@@ -11,6 +11,7 @@ import {
   _setFilterOptions,
   _setisCartSheetOpen,
   _setIsFilterSheetOpen,
+  _setIsSearchLoading,
   _setModelList,
 } from ".";
 import store from "../index";
@@ -74,4 +75,8 @@ export const setBrandList = (brands: string[]) => {
 
 export const setModelList = (models: string[]) => {
   store.dispatch(_setModelList(models));
+};
+
+export const setIsSearchLoading = (isLoading: boolean) => {
+  store.dispatch(_setIsSearchLoading(isLoading));
 };

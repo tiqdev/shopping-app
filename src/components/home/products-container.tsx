@@ -11,6 +11,7 @@ import ProductList from "./products-list";
 import SkeletonProduct from "./skeleton-product";
 import { Filter } from "lucide-react";
 import { setIsFilterSheetOpen } from "@/stores/product/actions";
+import SectionTitle from "./section-title";
 
 const ProductsContainer = () => {
   const products = useProducts();
@@ -28,15 +29,6 @@ const ProductsContainer = () => {
 
   return (
     <div className="flex flex-col mx-auto pt-4">
-      <div className="flex justify-between items-center mb-2">
-        <h1 className="text-xl font-bold text-primary">Products</h1>
-        <div
-          className="w-8 h-8 flex items-center justify-center tablet:hidden"
-          onClick={() => setIsFilterSheetOpen(!isFilterSheetOpen)}
-        >
-          <Filter size={24} className="text-primary" />
-        </div>
-      </div>
       {/*  Loading  */}
       {productsLoading && (
         <div className="products-list">
@@ -57,13 +49,24 @@ const ProductsContainer = () => {
 
       {/*  Products List  */}
       {!productsLoading && filteredProducts.length > 0 && (
-        <div className="flex-1 max-w-[810px] mx-auto h-fit pb-10">
-          {/*  Products List  */}
-          <ProductList filteredProducts={filteredProducts} />
+        <>
+          <div className="flex justify-between items-center">
+            <SectionTitle title="Products" />
+            <div
+              className="w-8 h-8 flex items-center justify-center tablet:hidden"
+              onClick={() => setIsFilterSheetOpen(!isFilterSheetOpen)}
+            >
+              <Filter size={24} className="text-primary" />
+            </div>
+          </div>
+          <div className="flex-1 max-w-[810px] mx-auto h-fit pb-10">
+            {/*  Products List  */}
+            <ProductList filteredProducts={filteredProducts} />
 
-          {/*  Pagination  */}
-          {pageCount > 1 && <Pagination pageCount={pageCount} />}
-        </div>
+            {/*  Pagination  */}
+            {pageCount > 1 && <Pagination pageCount={pageCount} />}
+          </div>
+        </>
       )}
     </div>
   );
