@@ -28,7 +28,7 @@ const FilterSheet = () => {
     >
       <div className="flex flex-col items-stretch">
         <div className="flex flex-row justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold text-primary">Filters</h1>
+          <h3 className="text-2xl font-bold text-primary">Filters</h3>
           <button
             onClick={() => setIsFilterSheetOpen(false)}
             className="text-primary"
@@ -36,6 +36,7 @@ const FilterSheet = () => {
             <X size={24} />
           </button>
         </div>
+
         <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-1">
             <span className="text-sm text-gray-600">Sort By</span>

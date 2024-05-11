@@ -25,7 +25,7 @@ const CartSheet = () => {
     >
       <div className="flex flex-col items-stretch">
         <div className="flex flex-row justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold text-primary">Your Cart</h1>
+          <h3 className="text-2xl font-bold text-primary">Your Cart</h3>
 
           <button
             onClick={() => setisCartSheetOpen(false)}

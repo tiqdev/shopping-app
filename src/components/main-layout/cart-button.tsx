@@ -15,7 +15,7 @@ const CartIconButton = () => {
   const cartTotalPrice = useCartTotalPrice();
   const isMobile = useIsMobile();
   return (
-    <div
+    <button
       className="flex items-center justify-end h-9 rounded-lg transition-colors relative gap-2 min-w-[140px]"
       onClick={() => {
         if (isMobile) {
@@ -30,13 +30,15 @@ const CartIconButton = () => {
         </span>
       )}
 
-      <div className="absolute top-0 -right-2 w-4 h-4 rounded-full center-row bg-white border-2 border-primary">
-        <span className="text-black text-[8px] font-bold">
-          {cartProductsCount}
-        </span>
-      </div>
+      {cartProductsCount > 0 && (
+        <div className="absolute top-0 -right-2 w-4 h-4 rounded-full center-row bg-white border-2 border-primary">
+          <span className="text-black text-[8px] font-bold">
+            {cartProductsCount}
+          </span>
+        </div>
+      )}
       <ShoppingCart />
-    </div>
+    </button>
   );
 };
 

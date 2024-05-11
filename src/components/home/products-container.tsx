@@ -52,13 +52,14 @@ const ProductsContainer = () => {
         <>
           <div className="flex justify-between items-center">
             <SectionTitle title="Products" />
-            <div
+            <button
               className="w-8 h-8 flex items-center justify-center tablet:hidden"
               onClick={() => setIsFilterSheetOpen(!isFilterSheetOpen)}
             >
               <Filter size={24} className="text-primary" />
-            </div>
+            </button>
           </div>
+
           <div className="flex-1 max-w-[810px] mx-auto h-fit pb-10">
             {/*  Products List  */}
             <ProductList filteredProducts={filteredProducts} />

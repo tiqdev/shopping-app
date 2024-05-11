@@ -21,6 +21,10 @@ body {
   }
 
   .products-list {
-    @apply w-full grid xl:grid-cols-4 lg:grid-cols-3 tablet:grid-cols-2 sm:grid-cols-3 mobile:grid-cols-2 grid-cols-2 mobile:gap-[28px] gap-[14px] h-fit;
+    @apply w-full grid xl:grid-cols-4 desktop:grid-cols-3 tablet:grid-cols-2 sm:grid-cols-3 mobile:grid-cols-2 grid-cols-2 mobile:gap-[20px] gap-[14px] h-fit;
+  }
+
+  .product-item {
+    @apply center-col flex flex-col gap-3 items-stretch p-[10px] bg-white h-fit mobile:w-[180px] w-[150px] border border-card rounded-[4px] hover:shadow-xl  transition-shadow;
   }
 }

@@ -7,6 +7,7 @@ import {
 } from "@/stores/product/hooks";
 import CheckBoxInput from "./checkbox-input";
 import { useEffect, useRef, useState } from "react";
+import { Search } from "lucide-react";
 
 const FilterBrand = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -31,13 +32,16 @@ const FilterBrand = () => {
 
   return (
     <div className="flex flex-col items-start justify-start gap-4 p-3 border border-card bg-white">
-      <input
-        type="text"
-        ref={inputRef}
-        onChange={handleChange}
-        placeholder="Search Brand"
-        className="w-full p-2 border border-gray-300 rounded-lg focus:none"
-      />
+      <div className="center-row w-full rounded-lg p-2 gap-2 bg-soft">
+        <Search className="text-gray-400" size={16} />
+        <input
+          type="text"
+          ref={inputRef}
+          onChange={handleChange}
+          placeholder="Search Brand"
+          className="w-full  bg-transparent focus:none outline-none"
+        />
+      </div>
       <div className="h-fit max-h-[120px] overflow-scroll flex flex-col gap-1">
         {filteredBrands.map((brand) => {
           return (

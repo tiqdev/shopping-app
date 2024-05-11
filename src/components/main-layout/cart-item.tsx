@@ -6,10 +6,10 @@ const CartItem = ({ product }: { product: CartProduct }) => {
   return (
     <div className="flex flex-row items-center justify-between">
       <div className="flex flex-col" key={product.id}>
-        <span className="text-[12px] text-black text-balance leading-4">
+        <span className="text-[13px] text-black text-balance leading-4">
           {product.name}
         </span>
-        <span className="font-medium text-[10px] text-primary">
+        <span className="font-medium text-[12px] text-primary">
           {formatPrice(Number(product.price))}₺
         </span>
       </div>

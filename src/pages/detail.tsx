@@ -1,3 +1,4 @@
+import PrimaryButton from "@/components/home/primary-button";
 import CartQuantityButtons from "@/components/main-layout/cart-quantity-buttons";
 import { formatPrice } from "@/lib/utils";
 import { addToCart, fetchProducts } from "@/stores/product/actions";
@@ -20,9 +21,13 @@ const Detail = () => {
 
   if (!selectedProduct) {
     return (
-      <div className="flex-1 flex ">
-        <div className="center-col w-full h-[60%] ">
-          <h1 className="text-2xl text-center">Product not found</h1>
+      <div className="h-[200px] flex flex-1 flex-col items-start justify-center gap-4">
+        <h2 className="text-4xl font-bold text-gray-800">Product Not Found</h2>
+        <div className="max-w-[140px]">
+          <PrimaryButton
+            title="Go Back"
+            onClick={() => window.history.back()}
+          />
         </div>
       </div>
     );
