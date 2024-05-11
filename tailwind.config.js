@@ -27,7 +27,10 @@ export default {
       },
       borderColor: {
         'card': 'hsl(0deg 0% 0% / 8%)',
-      }
+      },
+      boxShadow: {
+        'card': '0px 0px 10px 0px #A2AAB440'
+      },
     },
   },
   plugins: [],

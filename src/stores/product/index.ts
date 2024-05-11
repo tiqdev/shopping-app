@@ -5,6 +5,7 @@ import { Product } from "@/models/Product";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
+import { toast } from "sonner";
 
 type InitialStateType = {
   products: Product[];
@@ -22,7 +23,7 @@ type InitialStateType = {
 
   isCartSheetOpen: boolean;
   isFilterSheetOpen: boolean;
-
+  selectedSort: string;
   filterOptions: FilterOptions;
   modelList: string[];
   brandList: string[];
@@ -49,6 +50,7 @@ const initialState: InitialStateType = {
     search: "",
     page: 1,
   },
+  selectedSort: "price-low-high",
   modelList: [],
   brandList: [],
 };
@@ -73,6 +75,10 @@ export const ProductSlice = createSlice({
       state.modelList = action.payload;
     },
 
+    _setSelectedSort: (state, action: PayloadAction<string>) => {
+      state.selectedSort = action.payload;
+    },
+
     _setisCartSheetOpen: (state, action: PayloadAction<boolean>) => {
       state.isCartSheetOpen = action.payload;
     },
@@ -82,7 +88,6 @@ export const ProductSlice = createSlice({
     },
 
     _setIsFilterSheetOpen: (state, action: PayloadAction<boolean>) => {
-      console.log(action.payload, "action.payload");
       state.isFilterSheetOpen = action.payload;
     },
 
@@ -111,6 +116,8 @@ export const ProductSlice = createSlice({
         (acc, product) => acc + product.quantity,
         0
       );
+
+      toast.info("Product added to cart");
     },
 
     _incrementProductQuantity: (state, action: PayloadAction<string>) => {
@@ -128,6 +135,7 @@ export const ProductSlice = createSlice({
         (acc, product) => acc + product.quantity,
         0
       );
+      toast.info("Product quantity updated");
     },
 
     _decrementProductQuantity: (state, action: PayloadAction<string>) => {
@@ -151,6 +159,7 @@ export const ProductSlice = createSlice({
         (acc, product) => acc + product.quantity,
         0
       );
+      toast.info("Product quantity updated");
     },
 
     _setCart: (state, action: PayloadAction<CartProduct[]>) => {
@@ -196,6 +205,7 @@ export const {
   _setBrandList,
   _setIsFilterSheetOpen,
   _setIsSearchLoading,
+  _setSelectedSort,
 } = ProductSlice.actions;
 export default ProductSlice.reducer;
 

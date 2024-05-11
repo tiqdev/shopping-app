@@ -18,6 +18,7 @@ const SearchInput = () => {
       debounce(() => {
         setFilterOptions({
           ...filterOptions,
+          page: 1,
           search: query,
         });
         setIsSearchLoading(false);
@@ -26,6 +27,7 @@ const SearchInput = () => {
       debounce(() => {
         setFilterOptions({
           ...filterOptions,
+          page: 1,
           search: query,
         });
       }, 500)();
@@ -37,6 +39,7 @@ const SearchInput = () => {
     // Clear the search query
     setFilterOptions({
       ...filterOptions,
+      page: 1,
       search: "",
     });
 

@@ -53,6 +53,7 @@ const FilterBrand = () => {
                   // remove brand from the list
                   setFilterOptions({
                     ...filterOptions,
+                    page: 1,
                     brands: filterOptions.brands.filter(
                       (item) => item !== brand
                     ),
@@ -67,6 +68,7 @@ const FilterBrand = () => {
                   // add brand to the list
                   setFilterOptions({
                     ...filterOptions,
+                    page: 1,
                     brands: [...filterOptions.brands, brand],
                   });
 

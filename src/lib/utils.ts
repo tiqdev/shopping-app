@@ -96,8 +96,6 @@ export const filterModelsByBrand = (
     .filter((product) => brandList.includes(product.brand))
     .map((product) => product.model);
 
-  console.log(brandList);
-  console.log(models);
   return Array.from(new Set(models));
 };
 

@@ -1,5 +1,5 @@
 export interface FilterOptions {
-  sort: "old-new" | "new-old" | "price-low-high" | "price-high-low";
+  sort: string;
   brands: string[];
   models: string[];
   search: string;

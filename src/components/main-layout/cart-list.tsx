@@ -1,4 +1,5 @@
 import {
+  checkout,
   setCart,
   setCartProductsCount,
   setCartTotalPrice,
@@ -56,7 +57,10 @@ const CartList = () => {
               {formatPrice(cartTotalPrice)}₺
             </span>
           </div>
-          <button className="bg-primary text-white rounded-[4px] px-4 py-2 w-full">
+          <button
+            className="bg-primary text-white rounded-[4px] px-4 py-2 w-full"
+            onClick={checkout}
+          >
             Checkout
           </button>
         </div>

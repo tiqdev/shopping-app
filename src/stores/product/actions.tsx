@@ -13,9 +13,11 @@ import {
   _setIsFilterSheetOpen,
   _setIsSearchLoading,
   _setModelList,
+  _setSelectedSort,
 } from ".";
 import store from "../index";
 import { FilterOptions } from "@/models/FilterOptions";
+import { toast } from "sonner";
 
 export const fetchProducts = () => {
   store.dispatch(_fetchProducts());
@@ -53,7 +55,7 @@ export const clearCart = () => {
 
 export const checkout = () => {
   clearCart();
-  //toast.success("Checkout successful");
+  toast.success("Checkout successful");
 };
 
 export const setisCartSheetOpen = (isOpen: boolean) => {
@@ -61,7 +63,6 @@ export const setisCartSheetOpen = (isOpen: boolean) => {
 };
 
 export const setIsFilterSheetOpen = (isOpen: boolean) => {
-  console.log(isOpen, "isOpen");
   store.dispatch(_setIsFilterSheetOpen(isOpen));
 };
 
@@ -79,4 +80,8 @@ export const setModelList = (models: string[]) => {
 
 export const setIsSearchLoading = (isLoading: boolean) => {
   store.dispatch(_setIsSearchLoading(isLoading));
+};
+
+export const setSelectedSort = (sort: string) => {
+  store.dispatch(_setSelectedSort(sort));
 };

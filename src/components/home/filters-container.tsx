@@ -4,13 +4,17 @@ import FilterSort from "./filter-sort";
 
 const FiltersContainer = () => {
   const filters = [
-    { title: "Sort By", component: FilterSort },
     { title: "Brand", component: FilterBrand },
     { title: "Model", component: FilterModel },
   ];
 
   return (
     <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-1">
+        <span className="text-sm text-gray-600">Sort By</span>
+        <FilterSort screen={"pc"} />
+      </div>
+
       {filters.map((item, index) => (
         <div className="flex flex-col gap-1" key={index}>
           <span className="text-sm text-gray-600">{item.title}</span>

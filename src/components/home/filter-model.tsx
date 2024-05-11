@@ -46,6 +46,7 @@ const FilterModel = () => {
                 if (filterOptions.models.includes(model)) {
                   setFilterOptions({
                     ...filterOptions,
+                    page: 1,
                     models: filterOptions.models.filter(
                       (item) => item !== model
                     ),
@@ -53,6 +54,7 @@ const FilterModel = () => {
                 } else {
                   setFilterOptions({
                     ...filterOptions,
+                    page: 1,
                     models: [...filterOptions.models, model],
                   });
                 }

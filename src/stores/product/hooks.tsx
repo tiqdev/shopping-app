@@ -44,3 +44,7 @@ export const useIsFilterSheetOpen = () => {
 export const useIsSearchLoading = () => {
   return useAppSelector((state: RootState) => state.products.isSearchLoading);
 };
+
+export const useSelectedSort = () => {
+  return useAppSelector((state: RootState) => state.products.selectedSort);
+};

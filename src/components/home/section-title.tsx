@@ -1,5 +1,13 @@
-const SectionTitle = ({ title }: { title: string }) => (
-  <h2 className="text-xl font-bold text-primary mb-2">{title}</h2>
+import { cn } from "@/lib/utils";
+
+const SectionTitle = ({
+  title,
+  classnames = "",
+}: {
+  title: string;
+  classnames?: string;
+}) => (
+  <h2 className={cn("text-3xl font-bold text-primary", classnames)}>{title}</h2>
 );
 
 export default SectionTitle;
