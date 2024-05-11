@@ -32,7 +32,7 @@ const CartIconButton = () => {
 
       {cartProductsCount > 0 && (
         <div className="absolute top-0 -right-2 w-4 h-4 rounded-full center-row bg-white border-2 border-primary">
-          <span className="text-black text-[8px] font-bold">
+          <span className="text-primary text-[8px] font-bold">
             {cartProductsCount}
           </span>
         </div>
