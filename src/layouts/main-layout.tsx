@@ -12,7 +12,7 @@ const MainLayout = () => {
       <CartSheet />
       <FilterSheet />
       <Toaster expand={false} richColors position="bottom-right" />
-      <main className="w-full flex flex-col items-start justify-center gap-2 sm:px-4 px-3">
+      <main className="w-full flex flex-col items-start justify-center gap-2 sm:px-3 px-3">
         <div className="flex w-full max-w-pagemax mx-auto">
           <Outlet />
           <CartPanel />

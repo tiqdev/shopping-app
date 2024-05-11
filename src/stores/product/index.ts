@@ -10,17 +10,11 @@ import { toast } from "sonner";
 type InitialStateType = {
   products: Product[];
   productsLoading: boolean;
-  productsError: string;
-
   isSearchLoading: boolean;
-  searchError: string;
-
   cart: CartProduct[];
   cartProductsCount: number;
   cartTotalPrice: number;
   cartLoading: boolean;
-  cartError: string;
-
   isCartSheetOpen: boolean;
   isFilterSheetOpen: boolean;
   selectedSort: string;
@@ -32,15 +26,11 @@ type InitialStateType = {
 const initialState: InitialStateType = {
   products: [],
   productsLoading: false,
-  productsError: "",
-
   isSearchLoading: false,
-  searchError: "",
   cart: [],
   cartProductsCount: 0,
   cartTotalPrice: 0,
   cartLoading: false,
-  cartError: "",
   isCartSheetOpen: false,
   isFilterSheetOpen: false,
   filterOptions: {
@@ -151,6 +141,7 @@ export const ProductSlice = createSlice({
         }
       }
 
+      //
       state.cartTotalPrice = state.cart.reduce(
         (acc, product) => acc + Number(product.price) * product.quantity,
         0
@@ -188,7 +179,7 @@ export const ProductSlice = createSlice({
     });
     builder.addCase(_fetchProducts.rejected, (state) => {
       state.productsLoading = false;
-      state.productsError = "An error occurred while fetching products.";
+      toast.error("An error occurred while fetching products.");
     });
   },
 });

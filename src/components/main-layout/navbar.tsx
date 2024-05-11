@@ -4,7 +4,7 @@ import SearchInput from "./search-input";
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary text-white w-full flex flex-col items-start justify-center gap-2 sm:py-1.5 py-3 sm:px-4 px-3 sticky top-0 z-20">
+    <nav className="bg-primary text-white w-full flex flex-col items-start justify-center gap-2 sm:py-1.5 py-3 sm:px-3 px-3 sticky top-0 z-20">
       <div className="flex justify-between items-center w-full max-w-pagemax mx-auto gap-5">
         <Logo />
         <div className="flex-1 center-row sm:flex hidden">
