@@ -155,10 +155,12 @@ export const ProductSlice = createSlice({
         (acc, product) => acc + Number(product.price) * product.quantity,
         0
       );
+
       state.cartProductsCount = state.cart.reduce(
         (acc, product) => acc + product.quantity,
         0
       );
+
       toast.info("Product quantity updated");
     },
 
@@ -191,6 +193,24 @@ export const ProductSlice = createSlice({
   },
 });
 
+export const _fetchProducts = createAsyncThunk(
+  "products/fetchProducts",
+  async () => {
+    try {
+      const response = await axios.get(
+        "https://5fc9346b2af77700165ae514.mockapi.io/products"
+      );
+
+      if (response.status !== 200) return [];
+
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  }
+);
+
 export const {
   _setProducts,
   _addToCart,
@@ -208,18 +228,3 @@ export const {
   _setSelectedSort,
 } = ProductSlice.actions;
 export default ProductSlice.reducer;
-
-export const _fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
-  async () => {
-    try {
-      const response = await axios.get(
-        "https://5fc9346b2af77700165ae514.mockapi.io/products"
-      );
-      return response.data;
-    } catch (error) {
-      console.error(error);
-      return [];
-    }
-  }
-);
