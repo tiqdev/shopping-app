@@ -17,7 +17,7 @@ const PaginationButton = ({
       onClick={onClick}
       role="button"
       className={cn(
-        "w-[30px] h-[30px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors",
+        "w-[24px] h-[24px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors",
         isActive ? "bg-white shadow-card hover:bg-white hover:text-primary" : ""
       )}
     >
@@ -37,7 +37,7 @@ const ArrowButton = ({
     <button
       onClick={onClick}
       role="button"
-      className="w-[30px] h-[30px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors"
+      className="w-[24px] h-[24px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors"
     >
       {children}
     </button>
@@ -56,7 +56,7 @@ const Pagination = ({ pageCount }: { pageCount: number }) => {
     <div className="w-full flex justify-center items-center gap-[10px] mt-4">
       {filterOptions.page !== 1 && (
         <ArrowButton onClick={() => handleClick(filterOptions.page - 1)}>
-          <ChevronLeft size={14} />
+          <ChevronLeft size={12} />
         </ArrowButton>
       )}
 
@@ -71,7 +71,7 @@ const Pagination = ({ pageCount }: { pageCount: number }) => {
 
       {filterOptions.page !== pageCount && (
         <ArrowButton onClick={() => handleClick(filterOptions.page + 1)}>
-          <ChevronRight size={14} />
+          <ChevronRight size={12} />
         </ArrowButton>
       )}
     </div>
