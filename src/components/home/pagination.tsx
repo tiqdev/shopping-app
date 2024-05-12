@@ -15,6 +15,7 @@ const PaginationButton = ({
   return (
     <button
       onClick={onClick}
+      role="button"
       className={cn(
         "w-[30px] h-[30px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors",
         isActive ? "bg-white shadow-card hover:bg-white hover:text-primary" : ""
@@ -35,6 +36,7 @@ const ArrowButton = ({
   return (
     <button
       onClick={onClick}
+      role="button"
       className="w-[30px] h-[30px] rounded-[4px] hover:bg-primary hover:text-white flex justify-center items-center transition-colors"
     >
       {children}

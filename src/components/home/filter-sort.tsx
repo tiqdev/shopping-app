@@ -37,7 +37,7 @@ const FilterSort = ({ screen }: { screen: string }) => {
           label={option.label}
           value={option.value}
           name={_name}
-          checked={filterOptions.sort === option.value}
+          checked={filterOptions.sort === option.value ? true : false}
           id={option.value}
           onChange={() =>
             setFilterOptions({

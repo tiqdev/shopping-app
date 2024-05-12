@@ -11,11 +11,7 @@ const ProductItem = ({ product }: { product: Product }) => {
   const cart = useCart();
 
   return (
-    <Link
-      to={"/detail/" + product.id}
-      className="product-item"
-      key={product.id}
-    >
+    <Link to={"/detail/" + product.id} className="product-item">
       <img
         src={product.image}
         alt={product.name}
@@ -45,6 +41,7 @@ const ProductItem = ({ product }: { product: Product }) => {
       ) : (
         <PrimaryButton
           title="Add to Cart"
+          testId="add-to-cart"
           onClick={(event: MouseEvent<HTMLButtonElement>) => {
             event.preventDefault();
             addToCart(product.id);

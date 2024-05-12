@@ -41,7 +41,7 @@ const ProductsContainer = () => {
       {/*  Products Not Found  */}
       {!productsLoading && filteredProducts.length === 0 && (
         <div className="flex items-center justify-center max-w-[810px] mx-auto h-[400px]">
-          <span className="text-lg text-gray-500">
+          <span className="text-lg text-gray-500" data-testid="no-results">
             No results were found for your search
           </span>
         </div>

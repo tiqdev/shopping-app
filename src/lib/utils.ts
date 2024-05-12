@@ -15,27 +15,38 @@ export const filterProducts = (
   list: Product[],
   filterOptions: FilterOptions
 ) => {
+  // list not iterable error fix
+  if (!Array.isArray(list)) {
+    return { filteredList: [], pageCount: 0 };
+  }
+
   let filteredList = [...list];
 
   // Brand Filter
-  if (filterOptions.brands.length > 0) {
-    filteredList = filteredList.filter((product) =>
-      filterOptions.brands.includes(product.brand)
-    );
+  if (filterOptions.brands) {
+    if (filterOptions.brands.length > 0) {
+      filteredList = filteredList.filter((product) =>
+        filterOptions.brands.includes(product.brand)
+      );
+    }
   }
 
   // Model Filter
-  if (filterOptions.models.length > 0) {
-    filteredList = filteredList.filter((product) =>
-      filterOptions.models.includes(product.model)
-    );
+  if (filterOptions.models) {
+    if (filterOptions.models.length > 0) {
+      filteredList = filteredList.filter((product) =>
+        filterOptions.models.includes(product.model)
+      );
+    }
   }
 
   // Search Filter
-  if (filterOptions.search.trim() !== "") {
-    filteredList = filteredList.filter((product) =>
-      product.name.toLowerCase().includes(filterOptions.search.toLowerCase())
-    );
+  if (filterOptions.search) {
+    if (filterOptions.search.trim() !== "") {
+      filteredList = filteredList.filter((product) =>
+        product.name.toLowerCase().includes(filterOptions.search.toLowerCase())
+      );
+    }
   }
 
   // Sort Filter

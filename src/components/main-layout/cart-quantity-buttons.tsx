@@ -8,14 +8,17 @@ import { MouseEvent } from "react";
 
 const QuantityButton = ({
   onClick,
+  testId,
   children,
 }: {
   onClick: (event: MouseEvent<HTMLButtonElement>) => void;
   children: React.ReactNode;
+  testId?: string;
 }) => {
   return (
     <button
       onClick={onClick}
+      data-testid={testId}
       className="w-6 h-6 center-row bg-soft rounded-[2px] hover:bg-soft-dark transition-colors"
     >
       {children}
@@ -27,6 +30,7 @@ const CartQuantityButtons = ({ product }: { product: CartProduct }) => {
   return (
     <div className="flex flex-row items-center">
       <QuantityButton
+        testId="decrement-quantity"
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           event.preventDefault();
           decrementProductQuantity(product.id);
@@ -40,6 +44,7 @@ const CartQuantityButtons = ({ product }: { product: CartProduct }) => {
       </div>
 
       <QuantityButton
+        testId="increment-quantity"
         onClick={(event: MouseEvent<HTMLButtonElement>) => {
           event.preventDefault();
           incrementProductQuantity(product.id);

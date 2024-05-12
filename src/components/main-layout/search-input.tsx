@@ -66,7 +66,11 @@ const SearchInput = () => {
         placeholder="Search"
       />
       {!isSearchLoading && searchQuery !== "" && (
-        <X className="text-gray-600" onClick={handleClear} />
+        <X
+          data-testid="clear-search"
+          onClick={handleClear}
+          className="text-gray-600 cursor-pointer"
+        />
       )}
     </div>
   );
