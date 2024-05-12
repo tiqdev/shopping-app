@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# Eteration Frontend Case Study
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Merhaba! Ben Tarık Kaya.
+Bu projede önemli olan birkaç teknolojiyi kullanarak bir e-ticaret uygulaması geliştirdim. İşte bazı detaylar ve notlar:
 
-Currently, two official plugins are available:
+- **React.js ve TypeScript:** Proje, React.js kütüphanesi ve TypeScript ile geliştirildi. TypeScript, güçlü bir tip kontrolü sağlayarak kodun daha güvenli ve anlaşılır olmasına yardımcı oldu.
+- **Vite:** Proje, Vite ile başlatıldı. Vite, hızlı bir geliştirme sunan ve hızlı bir şekilde yeniden derleme sağlayan bir araçtır.
+- **Redux Toolkit:** Redux Toolkit, global durum yönetimi için kullanıldı. Redux Toolkit, Redux'u daha kolay ve verimli bir şekilde kullanmamızı sağladı.
+- **React Router DOM:** Sayfa yönlendirme ve navigasyon için React Router DOM kullanıldı. Bu, kullanıcıların uygulama içinde gezinmesini sağladı.
+- **Axios:** HTTP istekleri yapmak için Axios kullanıldı. Axios, isteklerin kolayca yapılmasını ve yanıtların işlenmesini sağladı.
+- **Tailwind CSS:** Proje, hızlı ve kolay bir şekilde stil oluşturmak için Tailwind CSS ile tasarlandı. Tailwind, bileşenlerin ve stillerin hızlı bir şekilde geliştirilmesine yardımcı oldu.
+- **Testing Library ve Vitest:** Birim testleri yazmak için Testing Library ve Vitest kullanılmıştır. Testing Library, kullanıcı davranışlarını simüle etmek ve bileşenlerin doğru çalıştığını doğrulamak için kullanılırken, Vitest ise test koşullarını tanımlamak ve test sonuçlarını değerlendirmek için kullanılmıştır.
+- **Sepet Yönetimi:** Sepet durumu, Redux kullanılarak yönetildi. Herhangi bir ürünün sepete eklenmesi veya çıkarılması durumunda, sepetteki ürün sayısı ve toplam fiyat güncellendi.
+- **Filtreleme ve Arama:** Ürünlerin sol tarafında bulunan filtreler ve üst kısımdaki arama çubuğu, ürünlerin filtrelenmesini ve aranmasını sağladı.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Filtreleme ve Arama:
 
-## Expanding the ESLint configuration
+Filtreleme ve arama işlemleri, istemci tarafında gerçekleştirildi. Bunun nedeni, veri setinin büyük olmaması ve /products dışında bir API uç noktasına sahip olmamamızdır. API desteği arttırılıp daha kapsamlı bir dökümantasyon sunulursa eğer, filtreleme ve arama işlemlerini sunucu tarafında gerçekleştirmek daha uygun olabilir.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Proje Kurulumu
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+1. Projeyi klonlayın: `git clone https://github.com/tiqdev/shopping-app.git`
+2. Proje dizinine gidin: `cd shopping-app`
+3. Gerekli bağımlılıkları yükleyin: `npm install`
+4. Projeyi başlatın: `npm run dev`
+5. Tarayıcınızda http://localhost:5173 adresine gidin.
