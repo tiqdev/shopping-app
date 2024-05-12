@@ -24,3 +24,6 @@ Filtreleme ve arama işlemleri, istemci tarafında gerçekleştirildi. Bunun ned
 3. Gerekli bağımlılıkları yükleyin: `npm install`
 4. Projeyi başlatın: `npm run dev`
 5. Tarayıcınızda http://localhost:5173 adresine gidin.
+
+**Demo:**
+Projenin canlı demosunu [buradan](https://tiqshop.vercel.app) ziyaret edebilirsiniz.
