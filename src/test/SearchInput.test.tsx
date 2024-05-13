@@ -17,15 +17,12 @@ describe("SearchInput", () => {
       </Provider>
     );
 
-    // input alanını role ile bul
     const input = screen.getByRole("textbox");
 
-    // input alanının belgede olup olmadığını kontrol et
     expect(input).toBeInTheDocument();
   });
 
-  // create a test for the handleChange function
-  it("handles the change event", async () => {
+  it("if the input is empty, the clear button should not be visible", async () => {
     render(
       <Provider store={store}>
         <BrowserRouter>

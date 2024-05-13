@@ -31,12 +31,10 @@ const CartList = () => {
     setCartJson(JSON.stringify(_cartInfo));
   };
 
-  // Update cart in local storage when cart changes
   useEffect(() => {
     updateCartInStorage();
   }, [cart, cartTotalPrice, cartProductsCount, setCartJson]);
 
-  // Set cart from local storage when component mounts
   useEffect(() => {
     if (cartJson) {
       setCart(JSON.parse(cartJson).cartList);

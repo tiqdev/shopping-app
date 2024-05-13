@@ -46,7 +46,6 @@ const Detail = () => {
               {formatPrice(Number(selectedProduct.price))}₺
             </p>
 
-            {/*  Add to Cart Button, we can create button component for this. */}
             {cart.find(
               (cartProduct) => cartProduct.id === selectedProduct.id
             ) ? (

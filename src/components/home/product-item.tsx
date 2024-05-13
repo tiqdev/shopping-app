@@ -18,8 +18,6 @@ const ProductItem = ({ product }: { product: Product }) => {
         className="w-[160px] h-[150px] object-cover"
       />
 
-      {/* <div className="w-[160px] h-[150px] object-cover bg-red-100"></div> */}
-
       <span className="text-primary font-medium text-sm">
         {formatPrice(Number(product.price))}₺
       </span>
